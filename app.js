@@ -2,7 +2,14 @@ const path = require("path");
 const fs = require("fs");
 const express = require("express");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const app = express();
+
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 const getDataFromFile = (cb) => {
   fs.readFile("data/items.json", "utf8", (error, data) => {
     if (error) {
